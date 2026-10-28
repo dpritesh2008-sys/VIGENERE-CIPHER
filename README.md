@@ -1,10 +1,11 @@
 # VIGENERE-CIPHER
 ## EX. NO: 4
- 
-
+~~~
+## Name : Ritesh DP
+## Reg. No. : 212225040339
+~~~
 ## IMPLEMETATION OF VIGENERE CIPHER
  
-
 ## AIM:
 
 To implement the Vigenere Cipher substitution technique using C program.
@@ -30,7 +31,49 @@ STEP-8: Repeat the above steps to generate the entire cipher text.
 
 
 ## PROGRAM
+~~~
 
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+
+int main() {
+    char text[100], key[100], cipher[100];
+    int i, j = 0, shift, len;
+
+    printf("Enter plaintext: ");
+    scanf("%99s", text);
+
+    printf("Enter key: ");
+    scanf("%99s", key);
+
+    len = strlen(key);
+
+    for (i = 0; text[i] != '\0'; i++) {
+        shift = toupper(key[j % len]) - 'A';
+        cipher[i] = (toupper(text[i]) - 'A' + shift) % 26 + 'A';
+        j++;
+    }
+    cipher[i] = '\0';
+
+    printf("Encrypted text: %s\n", cipher);
+
+    j = 0;
+    for (i = 0; cipher[i] != '\0'; i++) {
+        shift = toupper(key[j % len]) - 'A';
+        text[i] = (cipher[i] - 'A' - shift + 26) % 26 + 'A';
+        j++;
+    }
+    text[i] = '\0';
+
+    printf("Decrypted text: %s\n", text);
+
+    return 0;
+}
+~~~
 ## OUTPUT
 
+<img width="510" height="282" alt="image" src="https://github.com/user-attachments/assets/ed6cbe5e-cd38-43f5-b49d-09ac9afaa0ac" />
+
 ## RESULT
+Thus, the Vigenère Cipher encryption and decryption program was executed successfully.
